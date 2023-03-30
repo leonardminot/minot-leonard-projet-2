@@ -10,7 +10,8 @@ public class WriteSymptomDataToFile implements ISymptomWriter {
     private final static String FILE_PATH = "result.out";
     public void writeSymptoms(Map<String, Integer> symptoms) {
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, false))) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, false));
             for (Map.Entry<String, Integer> entry : symptoms.entrySet()) {
                 writer.write(entry.getKey() + ": " + entry.getValue());
                 writer.newLine();
