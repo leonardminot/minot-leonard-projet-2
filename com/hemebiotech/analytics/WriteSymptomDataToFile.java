@@ -22,7 +22,7 @@ public class WriteSymptomDataToFile implements ISymptomWriter {
                 writer.newLine();
             }
 
-            //writer.close();
+            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
