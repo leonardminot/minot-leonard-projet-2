@@ -14,11 +14,11 @@ public class WriteSymptomDataToFile implements ISymptomWriter {
             BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, false));
 
             for (Map.Entry<String, Integer> entry : symptoms.entrySet()) {
-                writer.write(entry.getKey() + ": " + entry.getValue());
+                writer.write(entry.getKey() + " : " + entry.getValue());
                 writer.newLine();
             }
 
-            //writer.flush();
+            writer.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
