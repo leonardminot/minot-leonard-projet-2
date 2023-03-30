@@ -13,12 +13,12 @@ public class AnalyticsCounter {
 	private static int rashCount = 0;
 	private static int pupilCount = 0;
 
-	private ISymptomReader symptomReader;
-	private ISymptomWriter symptomWriter;
+	private final ISymptomReader symptomReader;
+	private final ISymptomWriter symptomWriter;
 
 	public AnalyticsCounter(ISymptomReader reader, ISymptomWriter writer) {
-		this.symptomReader = reader;
-		this.symptomWriter = writer;
+		symptomReader = reader;
+		symptomWriter = writer;
 	}
 
 	public List<String> getSymptoms() {
@@ -26,25 +26,21 @@ public class AnalyticsCounter {
 	}
 
 	public Map<String, Integer> countSymptoms(List<String> symptoms) {
-		Map<String, Integer> symptomCounter = new HashMap<>();
+		final Map<String, Integer> symptomCounter = new TreeMap<>();
 
 		for (String symptom : symptoms) {
-			int currentQuantity = 0;
-			if (symptomCounter.get(symptom) != null) {
-				currentQuantity = symptomCounter.get(symptom);
-			}
-
-			symptomCounter.put(symptom, currentQuantity + 1);
+			symptomCounter.putIfAbsent(symptom, 0);
+			symptomCounter.put(symptom, symptomCounter.get(symptom) + 1);
 		}
 		return symptomCounter;
 	}
 
 	public Map<String, Integer> sortSymptoms(Map<String, Integer> symptoms) {
-		return new TreeMap<>(symptoms);
+		return symptoms;
 	}
 
 	public void writeSymptoms(Map<String, Integer> symptoms) {
-		this.symptomWriter.writeSymptoms(symptoms);
+		symptomWriter.writeSymptoms(symptoms);
 	}
 	
 	public static void main(String args[]) throws Exception {
