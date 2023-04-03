@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * Manages input and output files, transforming raw data into a usable and ordered set
+ */
 public class AnalyticsCounter {
 
 	private final ISymptomReader symptomReader;
@@ -21,8 +24,8 @@ public class AnalyticsCounter {
 	/**
 	 * Count symptoms from a list with duplication
 	 *
-	 * @param symptoms List with all occurrence for each symptom (one line per occurrence)
-	 * @return TreeMap with symptom as key and the occurrence as value
+	 * @param symptoms List of all occurrences for each symptom (one line per occurrence)
+	 * @return TreeMap with symptom as key and occurrences as value
 	 */
 	public Map<String, Integer> countSymptoms(List<String> symptoms) {
 		final Map<String, Integer> symptomCounter = new TreeMap<>();
