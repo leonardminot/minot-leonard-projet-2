@@ -18,6 +18,12 @@ public class AnalyticsCounter {
 		return symptomReader.getSymptoms();
 	}
 
+	/**
+	 * Count symptoms from a list with duplication
+	 *
+	 * @param symptoms List with all occurrence for each symptom (one line per occurrence)
+	 * @return TreeMap with symptom as key and the occurrence as value
+	 */
 	public Map<String, Integer> countSymptoms(List<String> symptoms) {
 		final Map<String, Integer> symptomCounter = new TreeMap<>();
 
